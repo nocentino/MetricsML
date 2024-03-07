@@ -1,4 +1,4 @@
-docker run -it  --platform=linux/amd64  ubuntu:20.04 bash 
+docker run -it  --platform=linux/amd64  ubuntu:22.04 bash 
 
 docker build -t mssql-server-mlservices . --platform=linux/amd64
 
