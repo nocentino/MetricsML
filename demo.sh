@@ -24,5 +24,12 @@ docker start sql1
 docker rm -f sql1
 
 
+
+
+
+
+
+
+
 EXEC sp_execute_external_script @script=N'import sys;print(sys.version)',@language=N'Python';
 GO
