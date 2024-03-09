@@ -11,16 +11,18 @@ docker run \
     --publish 1433:1433 \
     --detach mssql-server-mlservices   
 
+
+EXEC sp_configure 'external scripts enabled', 1;
+GO
+RECONFIGURE
+GO
+
 docker stop sql1
 
 docker start sql1
 
 docker rm -f sql1
 
-EXEC sp_configure 'external scripts enabled', 1;
-GO
-RECONFIGURE
-GO
 
 EXEC sp_execute_external_script @script=N'import sys;print(sys.version)',@language=N'Python';
 GO

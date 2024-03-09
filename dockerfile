@@ -12,7 +12,7 @@ RUN mkdir -p -m 770 /var/opt/mssql/security/ca-certificates && chgrp -R 0 /var/o
 # Installing system utilities
 RUN apt-get update && \
     apt-get install -y supervisor apt-transport-https curl gnupg2 python3 libpython3.10 python3-pip libssl-dev locales && \
-    pip install dill numpy==1.22.0 pandas patsy python-dateutil && \
+    pip install dill numpy==1.22.0 pandas patsy python-dateutil scikit-learn scipy matplotlib && \
     pip install https://aka.ms/sqlml/python3.10/linux/revoscalepy-10.0.1-py3-none-any.whl --target=/usr/lib/python3.10/dist-packages && \
     curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
     curl https://packages.microsoft.com/config/ubuntu/22.04/mssql-server-2022.list  > /etc/apt/sources.list.d/msprod.list 
