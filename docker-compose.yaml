@@ -1,15 +1,6 @@
 version: '3.3'
 
 services:
-  pure-fa-om-exporter:
-    image: quay.io/purestorage/pure-fa-om-exporter:latest
-    command: 
-      - '--port=9490'
-    depends_on: 
-      - prometheus
-    ports:
-      - 9490:9490
-    restart: on-failure
   telegraf:
     image: "telegraf"
     depends_on:
@@ -37,7 +28,6 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin!
     depends_on: 
-      - pure-fa-om-exporter
       - prometheus
     ports:
       - 3000:3000
@@ -46,6 +36,21 @@ services:
       - ./grafana/datasources:/etc/grafana/provisioning/datasources
       - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
     restart: on-failure
+  sql1:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: dockerfile.sql
+    hostname: sql1
+    ports:
+      - 1433:1433
+    volumes:
+      - sql-data:/var/opt/mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=S0methingS@Str0ng!
+
 volumes:
+  sql-data:
   prometheus-data:
   grafana-data:
