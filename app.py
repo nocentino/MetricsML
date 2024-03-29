@@ -18,7 +18,7 @@ def get_predictions():
 
 
     # CPU Query
-    PROMQL1 = {'query':'sqlserver_cpu_sqlserver_process_cpu{host="8681a262196f"}[1d]'}
+    PROMQL1 = {'query':'sqlserver_cpu_sqlserver_process_cpu[1d]'}
 
 
     # Get the response from the prometheus API
@@ -30,8 +30,12 @@ def get_predictions():
 
 
     # A dataframe that converts the json to a dataframe ready for prophet with timestamp as the first columm and the metric value as the second column for each result
-    df = pandas.DataFrame(r1_json['data']['result'][0]['values'], columns=['ds', 'y'])  
+    df = pandas.DataFrame()  
 
+    # for each result in the json response, create a dataframe with the timestamp and the metric value
+    for result in r1_json['data']['result']:
+        df = pandas.concat([df, pandas.DataFrame(result['values'], columns=['ds', 'y'])])
+        
 
     # Use prophet to predict a value 5 minutes in the future based off of the data in the data frame
     df['ds'] = pandas.to_datetime(df['ds'], unit='s')
@@ -39,7 +43,6 @@ def get_predictions():
     m.fit(df)
     future = m.make_future_dataframe(periods=300, freq='s')      #Automatically fits to sampling interval in the data set, here its 30 seconds
     forecast = m.predict(future)                                 #Will predict each interval up until the number of periods
-
 
     # Extract the metric name, hostname from the json response. Build the string that is the new metric name.
     my_predicted_sql_instance = r1_json['data']['result'][0]['metric'].get('sql_instance')
@@ -64,7 +67,7 @@ def get_predictions():
     my_sql_instance = sql_instance(my_predicted_sql_instance)
     my_sql_instance.metrics = predicted_metrics
     
-    print("Get metrics...")
+    print("Get metrics...\nPrometheus Results Evaluated: " + str(df.y.count()) )
 
     return my_sql_instance
 
