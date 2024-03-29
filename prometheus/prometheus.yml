@@ -7,3 +7,8 @@ scrape_configs:
     static_configs:
     - targets:
       - "telegraf:9273"
+  - job_name: metricsml
+    metrics_path: /metrics
+    static_configs:
+    - targets:
+      - "metricsml:8000"
