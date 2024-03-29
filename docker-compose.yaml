@@ -2,7 +2,8 @@ version: '3.3'
 
 services:
   telegraf:
-    image: "telegraf"
+    image: telegraf
+    hostname: telegraf
     depends_on:
       - prometheus
     volumes:
@@ -24,6 +25,7 @@ services:
       restart: on-failure
   prometheus:
     image: prom/prometheus
+    hostname: prometheus
     command:
       - '--storage.tsdb.retention=60d'
       - '--storage.tsdb.path=/prometheus'
@@ -36,6 +38,7 @@ services:
     restart: on-failure
   grafana:
     image: grafana/grafana
+    hostname: grafana
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin!
