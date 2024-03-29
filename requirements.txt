@@ -1,12 +1,4 @@
-dill 
-numpy
-patsy 
-python-dateutil 
-scikit-learn 
-scipy 
-matplotlib 
 pandas 
-prophet==1.1.4 
-plotly
+prophet
 requests
 prometheus_client
