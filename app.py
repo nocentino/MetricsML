@@ -53,7 +53,7 @@ def get_predictions():
 
 
     # Load up the predicted value and the lower and upper bounds, only non-negative values are allowed
-    predicted_metric_value_yhat = forecast[['yhat']].tail(1).values[0][0]
+    predicted_metric_value_yhat  = max ( 0, forecast[['yhat']].tail(1).values[0][0] )
     predicted_metric_value_lower = max ( 0, forecast[['yhat_lower']].tail(1).values[0][0] )
     predicted_metric_value_upper = max ( 0, forecast[['yhat_upper']].tail(1).values[0][0] )
 
