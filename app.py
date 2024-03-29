@@ -51,6 +51,7 @@ def get_predictions():
     predicted_metric_name_yhat_lower = predicted_metric_name + '_yhat_lower'
     predicted_metric_name_yhat_upper = predicted_metric_name + '_yhat_upper'
 
+
     # Load up the predicted value and the lower and upper bounds, only non-negative values are allowed
     predicted_metric_value_yhat = forecast[['yhat']].tail(1).values[0][0]
     predicted_metric_value_lower = max ( 0, forecast[['yhat_lower']].tail(1).values[0][0] )
@@ -91,7 +92,7 @@ def my_app(environ, start_fn):
         get_metrics()
         return metrics_app(environ, start_fn)
     start_fn('200 OK', [])
-    return [b'Hello World']
+    return [b'MetricsML Server v0.01\n']
 
 if __name__ == '__main__':
     metrics_app = make_wsgi_app()
