@@ -132,7 +132,6 @@ def get_metrics():
             get_metrics.gauge[metricname].labels(sql_instance=instance.sql_instance_name).set(metricvalue)
 
 
-
 def my_app(environ, start_fn):
     if environ['PATH_INFO'] == '/metrics':
         get_metrics()
