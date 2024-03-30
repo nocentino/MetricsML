@@ -18,6 +18,7 @@ services:
       hostname: metricsml   
       environment:
       - PROMETHEUS=http://prometheus:9090/api/v1/query
+      - DAYSBACK=7d
       depends_on: 
         - prometheus
       ports:
@@ -62,8 +63,21 @@ services:
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=S0methingS@Str0ng!
+  sql2:
+    platform: linux/amd64
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    hostname: sql2
+    ports:
+      - 1434:1433
+    volumes:
+      - sql2-data:/var/opt/mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=S0methingS@Str0ng!
+
 
 volumes:
   sql-data:
+  sql2-data:
   prometheus-data:
   grafana-data:
