@@ -18,7 +18,7 @@ services:
       hostname: metricsml   
       environment:
       - PROMETHEUS=http://prometheus:9090/api/v1/query
-      - DAYSBACK=7d
+      - DAYSBACK=1d
       depends_on: 
         - prometheus
       ports:

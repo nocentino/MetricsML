@@ -14,12 +14,13 @@ class sql_instance:
         
 
 def get_prometheus_data():
-    # Prometheus api endpoint for query
-    URL = 'http://localhost:9090/api/v1/query'
+    # Prometheus api endpoint for query get from environment variable
+    URL = os.getenv('PROMETHEUS')
 
 
     # CPU Query
-    PROMQL1 = {'query':'sqlserver_cpu_sqlserver_process_cpu[1d]'}
+    DAYSBACK = os.getenv('DAYSBACK')
+    PROMQL1 = {'query':"sqlserver_cpu_sqlserver_process_cpu[" + DAYSBACK + "]"}
 
 
     # Get the response from the prometheus API
@@ -120,6 +121,7 @@ def get_metrics():
         for metricname, metricvalue in instance.metrics.items():
             get_metrics.gauge[metricname] = Gauge(metricname, 'Predicted Metric : ' + metricname, ['sql_instance'])
 
+        # update with the first batch of metrics
         for instance in predicted_metrics:
             for metricname, metricvalue in instance.metrics.items():
                 get_metrics.gauge[metricname].labels(sql_instance=instance.sql_instance_name).set(metricvalue)
@@ -140,5 +142,5 @@ def my_app(environ, start_fn):
 
 if __name__ == '__main__':
     metrics_app = make_wsgi_app()
-    httpd = make_server('', 8001, my_app)
+    httpd = make_server('', 8000, my_app)
     httpd.serve_forever()
