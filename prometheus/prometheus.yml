@@ -5,12 +5,10 @@ scrape_configs:
   - job_name: telegraf
     metrics_path: /metrics
     static_configs:
-    - targets:
-      - "telegraf:9273"
-  - job_name: metricsml
-    scrape_interval:     5m
-    scrape_timeout:      3m
-      metrics_path: /metrics
+      - targets: ["telegraf:9273"]
+  - job_name: MetricsML
+    scrape_interval:     60s
+    scrape_timeout:      30s
+    metrics_path: /metrics
     static_configs:
-    - targets:
-      - "metricsml:8000"
+      - targets: ["metricsml:8000"]
