@@ -24,6 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
+  "id": 4,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -124,7 +125,7 @@
           "editorMode": "code",
           "expr": "avg(sqlserver_cpu_sqlserver_process_cpu{sql_instance=~\"^$sql_instance\"}) by (sql_instance)",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{sql_instance}} - Actual",
           "range": true,
           "refId": "A"
         },
@@ -137,7 +138,7 @@
           "expr": "sqlserver_cpu_sqlserver_process_cpu_yhat{sql_instance=~\"^$sql_instance\"}",
           "hide": false,
           "instant": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{sql_instance}} - Predicted",
           "range": true,
           "refId": "B"
         },
@@ -150,7 +151,7 @@
           "expr": "sqlserver_cpu_sqlserver_process_cpu_yhat_lower{sql_instance=~\"^$sql_instance\"}",
           "hide": false,
           "instant": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{sql_instance}} - Lower",
           "range": true,
           "refId": "C"
         },
@@ -163,7 +164,7 @@
           "expr": "sqlserver_cpu_sqlserver_process_cpu_yhat_upper{sql_instance=~\"^$sql_instance\"}",
           "hide": false,
           "instant": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{sql_instance}} - Upper",
           "range": true,
           "refId": "D"
         }
@@ -676,8 +677,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -777,8 +777,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -876,8 +875,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -980,8 +978,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1324,8 +1321,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "SQL Server and FlashArray",
-  "uid": "3MpPHQhVz",
-  "version": 1,
+  "title": "SQL Server and FlashArray - MetricsML",
+  "uid": "3MpPHQhVZ",
+  "version": 3,
   "weekStart": ""
 }
