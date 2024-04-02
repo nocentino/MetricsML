@@ -96,18 +96,13 @@ def get_predictions():
         my_sql_instances.append(my_sql_instance)
     
     
-        # print the predicted values to the console
-        print("Prometheus Results Evaluated: " + str(df.y.count()) + "\tPredicted Value: " + str(predicted_metric_value_yhat) + "\tLower Bound: " + str(predicted_metric_value_lower) + "\tUpper Bound: " + str(predicted_metric_value_upper))
-
-
     # print all of the sql_instance objects to the console
     for instance in my_sql_instances:
-        print("SQL Instance: " + instance.sql_instance_name)
+        print("\n\nSQL Instance: " + instance.sql_instance_name)
         for metricname, metricvalue in instance.metrics.items():
             print("\tMetric: " + metricname + "\tValue: " + str(metricvalue))
             
     return my_sql_instances
-
 
 def get_metrics():
     predicted_metrics = get_predictions()
