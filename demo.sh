@@ -1,35 +1,21 @@
-docker run -it  --platform=linux/amd64  ubuntu:22.04 bash 
-
-docker build -t mssql-server-mlservices . --platform=linux/amd64
-
-
-docker run \
-    --env 'ACCEPT_EULA=Y' \
-    --env 'ACCEPT_EULA_ML=Y' \
-    --env 'MSSQL_SA_PASSWORD=S0methingS@Str0ng!' \
-    --name 'sql1' \
-    --publish 1433:1433 \
-    --detach mssql-server-mlservices   
+# Let's dive into the docker compose manifest
+code docker-compose.yaml
 
 
-EXEC sp_configure 'external scripts enabled', 1;
-GO
-RECONFIGURE
-GO
-
-docker stop sql1
-
-docker start sql1
-
-docker rm -f sql1
+# Start up our monitoring stack using docker compose
+docker compose up --detach
 
 
+# Check to ensure everything is up and running
+docker ps
 
 
+# Let's first look at the metrics being collected from SQL Server by Telegraf
+open http://localhost:9273/metrics 
 
 
-
-
-
-EXEC sp_execute_external_script @script=N'import sys;print(sys.version)',@language=N'Python';
-GO
+# Let's check out prometheus and how to run a query
+open http://localhost:9090
+http://localhost:9090/graph?g0.expr=sqlserver_cpu_sqlserver_process_cpu%5B5m%5D&g0.tab=1&g0.display_mode=lines&g0.show_exemplars=0&g0.range_input=1h
+http://localhost:9090/graph?g0.expr=sqlserver_cpu_sqlserver_process_cpu%7Bsql_instance%3D%27aen-sql-22-a%27%7D%5B5m%5D&g0.tab=1&g0.display_mode=lines&g0.show_exemplars=0&g0.range_input=1h
+http://localhost:9090/graph?g0.expr=sqlserver_cpu_sqlserver_process_cpu%7Bsql_instance%3D%27aen-sql-22-a%27%7D%5B5m%5D&g0.tab=1&g0.display_mode=lines&g0.show_exemplars=0&g0.range_input=1h
