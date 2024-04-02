@@ -522,12 +522,12 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
-            "aen-sql-22-a"
+            "All"
           ],
           "value": [
-            "aen-sql-22-a"
+            "$__all"
           ]
         },
         "datasource": {
@@ -553,7 +553,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -590,8 +590,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "SQL Server and FlashArray - MetricsML",
+  "title": "SQL Server - MetricsML",
   "uid": "3MpPHQhVZ",
-  "version": 6,
+  "version": 1,
   "weekStart": ""
 }

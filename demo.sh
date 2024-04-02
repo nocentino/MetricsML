@@ -14,8 +14,26 @@ docker ps
 open http://localhost:9273/metrics 
 
 
+# Quick review of the telegraf configuration for the SQL Server plugin
+code ./telegraf/telegraf.conf
+
+
+
+# Let's look at the prometheus configuration file
+code ./prometheus/prometheus.yml
+
+
 # Let's check out prometheus and how to run a query
 open http://localhost:9090
-http://localhost:9090/graph?g0.expr=sqlserver_cpu_sqlserver_process_cpu%5B5m%5D&g0.tab=1&g0.display_mode=lines&g0.show_exemplars=0&g0.range_input=1h
-http://localhost:9090/graph?g0.expr=sqlserver_cpu_sqlserver_process_cpu%7Bsql_instance%3D%27aen-sql-22-a%27%7D%5B5m%5D&g0.tab=1&g0.display_mode=lines&g0.show_exemplars=0&g0.range_input=1h
-http://localhost:9090/graph?g0.expr=sqlserver_cpu_sqlserver_process_cpu%7Bsql_instance%3D%27aen-sql-22-a%27%7D%5B5m%5D&g0.tab=1&g0.display_mode=lines&g0.show_exemplars=0&g0.range_input=1h
+
+
+
+# Now let's look at Grafana and see how to visualize the CPU metrics into a dashboard
+open http://localhost:3000
+
+
+
+
+
+# Clean up
+docker compose down
