@@ -9,13 +9,12 @@ URL ='http://localhost:9090/api/v1/query'
 
 
 # CPU Query
-DAYSBACK = '1d'
-PROMQL1 = {'query':"sqlserver_cpu_sqlserver_process_cpu[" + DAYSBACK + "]"}
+PROMQL1 = {'query':"sqlserver_cpu_sqlserver_process_cpu[1d]"}
 
 
 # Get the response from the prometheus API
 r1 = requests.get(url = URL, params = PROMQL1)
-
+r1
 
 # Convert the response to json and return just the time stamp and the metric value
 r1_json = r1.json()
@@ -47,14 +46,16 @@ predicted_metric_name = dataframes[0]['metric_name']
 
 
 # Print the sql_instance name and the metric name
-print("\nPredicting for: " + my_predicted_sql_instance + "\tMetric: " + predicted_metric_name + "\tNumber of metrics to be evaluated: " + str(df.y.count()) )
+print("\nPredicting for: " + my_predicted_sql_instance + 
+      "\tMetric: " + predicted_metric_name + 
+      "\tNumber of metrics to be evaluated: " + str(df.y.count()) )
 
 
 # Use prophet to predict a value 5 minutes in the future based off of the data in the data frame
 df['ds'] = pandas.to_datetime(df['ds'], unit='s')
-m = Prophet()
+m = Prophet(changepoint_prior_scale=1.0)
 m.fit(df)
-future = m.make_future_dataframe(periods=300, freq='s')      #Automatically fits to sampling interval in the data set, here its 30 seconds
+future = m.make_future_dataframe(periods=30, freq='s')      #Automatically fits to sampling interval in the data set, here its 30 seconds
 forecast = m.predict(future)                                 #Will predict each interval up until the number of periods
 
 

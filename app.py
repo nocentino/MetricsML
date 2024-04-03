@@ -2,7 +2,7 @@ import requests, platform
 import time, sys, os, re
 import pandas
 from prophet import Prophet
-from prometheus_client import start_http_server, Gauge, make_wsgi_app
+from prometheus_client import Gauge, make_wsgi_app
 from wsgiref.simple_server import make_server
 
 
@@ -62,23 +62,24 @@ def get_predictions():
         
         # Use prophet to predict a value 5 minutes in the future based off of the data in the data frame
         df['ds'] = pandas.to_datetime(df['ds'], unit='s')
-        m = Prophet()
+        m = Prophet(changepoint_prior_scale=1.0)
         m.fit(df)
-        future = m.make_future_dataframe(periods=300, freq='s')      #Automatically fits to sampling interval in the data set, here its 30 seconds
+        future = m.make_future_dataframe(periods=30, freq='s')      #Automatically fits to sampling interval in the data set, here its 30 seconds
         forecast = m.predict(future)                                 #Will predict each interval up until the number of periods
+    
+        
+        # Load up the predicted value and the lower and upper bounds, only non-negative values are allowed
+        predicted_metric_value_yhat  = max ( 0, forecast[['yhat']].tail(1).values[0][0] )
+        predicted_metric_value_lower = max ( 0, forecast[['yhat_lower']].tail(1).values[0][0] )
+        predicted_metric_value_upper = max ( 0, forecast[['yhat_upper']].tail(1).values[0][0] )
     
     
         # Extract the metric name, hostname from the json response. Build the string that is the new metric name.
         predicted_metric_name_yhat = predicted_metric_name + '_yhat'
         predicted_metric_name_yhat_lower = predicted_metric_name + '_yhat_lower'
         predicted_metric_name_yhat_upper = predicted_metric_name + '_yhat_upper'
-    
-    
-        # Load up the predicted value and the lower and upper bounds, only non-negative values are allowed
-        predicted_metric_value_yhat  = max ( 0, forecast[['yhat']].tail(1).values[0][0] )
-        predicted_metric_value_lower = max ( 0, forecast[['yhat_lower']].tail(1).values[0][0] )
-        predicted_metric_value_upper = max ( 0, forecast[['yhat_upper']].tail(1).values[0][0] )
-    
+
+
     
         # Create a dictonary for the predicted metric values and the lower and upper bounds
         predicted_metrics = {

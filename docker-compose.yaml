@@ -11,19 +11,6 @@ services:
     restart: on-failure
     ports:
       - 9273:9273
-  metricsml:
-      build:
-        context: .
-        dockerfile: dockerfile.metricsml
-      hostname: metricsml   
-      environment:
-      - PROMETHEUS=http://prometheus:9090/api/v1/query
-      - DAYSBACK=1d
-      depends_on: 
-        - prometheus
-      ports:
-        - 8000:8000
-      restart: on-failure
   prometheus:
     image: prom/prometheus
     hostname: prometheus
@@ -52,6 +39,19 @@ services:
       - ./grafana/datasources:/etc/grafana/provisioning/datasources
       - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
     restart: on-failure
+  metricsml:
+      build:
+        context: .
+        dockerfile: dockerfile.metricsml
+      hostname: metricsml   
+      environment:
+      - PROMETHEUS=http://prometheus:9090/api/v1/query
+      - DAYSBACK=1d
+      depends_on: 
+        - prometheus
+      ports:
+        - 8000:8000
+      restart: on-failure
   sql1:
     platform: linux/amd64
     image: mcr.microsoft.com/mssql/server:2022-latest

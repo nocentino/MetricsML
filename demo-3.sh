@@ -2,8 +2,23 @@
 code app.py
 
 
+# Look at the requirements file for the application
+code requirements.txt
+
+
+# Now let's check out the dockerfile for the application
+code dockerfile.metricsml
+
+
+
+# open the docker-compose file again
+code docker-compose.yaml
+
+
+
 # The app is up and running inside the container when we started docker compose
 docker ps
+
 
 
 # Let's check the logs of the container
@@ -16,10 +31,6 @@ curl http://localhost:8000
 
 # Let's check the /metrics endpoint, which is the prometheus metrics
 curl http://localhost:8000/metrics
-
-
-# Let's check the logs of the container again 
-docker logs -f metricsml-metricsml-1
 
 
 # Now let's measure how long it takes to scrape the /metrics endpoint
@@ -35,3 +46,6 @@ code ./prometheus/prometheus.yml
 open http://localhost:9090
 
 
+
+# open grafana dashboard
+open http://localhost:3000
