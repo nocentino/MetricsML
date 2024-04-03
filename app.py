@@ -57,9 +57,9 @@ def get_predictions():
         df = data['dataframe']
         my_predicted_sql_instance = data['sql_instance']
         predicted_metric_name = data['metric_name']
-        print("Predicting for: " + my_predicted_sql_instance + "\tMetric: " + predicted_metric_name)
-    
-    
+        print("\nPredicting for: " + my_predicted_sql_instance + "\tMetric: " + predicted_metric_name + "\tNumber of metrics evaluated: " + str(df.y.count()) )
+
+        
         # Use prophet to predict a value 5 minutes in the future based off of the data in the data frame
         df['ds'] = pandas.to_datetime(df['ds'], unit='s')
         m = Prophet()
@@ -98,7 +98,7 @@ def get_predictions():
     
     # print all of the sql_instance objects to the console
     for instance in my_sql_instances:
-        print("\n\nSQL Instance: " + instance.sql_instance_name)
+        print("\nSQL Instance: " + instance.sql_instance_name)
         for metricname, metricvalue in instance.metrics.items():
             print("\tMetric: " + metricname + "\tValue: " + str(metricvalue))
             

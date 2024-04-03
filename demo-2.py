@@ -2,7 +2,7 @@ import requests, platform
 import time, sys, os, re
 import pandas
 from prophet import Prophet
-        
+
 
 # Prometheus api endpoint for query get from environment variable
 URL ='http://localhost:9090/api/v1/query'
@@ -47,7 +47,7 @@ predicted_metric_name = dataframes[0]['metric_name']
 
 
 # Print the sql_instance name and the metric name
-print("\n\nPredicting for: " + my_predicted_sql_instance + "\tMetric: " + predicted_metric_name)
+print("\nPredicting for: " + my_predicted_sql_instance + "\tMetric: " + predicted_metric_name + "\tNumber of metrics to be evaluated: " + str(df.y.count()) )
 
 
 # Use prophet to predict a value 5 minutes in the future based off of the data in the data frame
