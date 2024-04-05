@@ -60,12 +60,12 @@ def get_predictions():
         print("\nPredicting for: " + my_predicted_sql_instance + "\tMetric: " + predicted_metric_name + "\tNumber of metrics evaluated: " + str(df.y.count()) )
 
         
-        # Use prophet to predict a value 5 minutes in the future based off of the data in the data frame
+        # Use prophet to predict a value 30 seconds in the future based off of the data in the data frame
         df['ds'] = pandas.to_datetime(df['ds'], unit='s')
         m = Prophet(changepoint_prior_scale=1.0)
         m.fit(df)
         future = m.make_future_dataframe(periods=30, freq='s')      #Automatically fits to sampling interval in the data set, here its 30 seconds
-        forecast = m.predict(future)                                 #Will predict each interval up until the number of periods
+        forecast = m.predict(future)                                #Will predict each interval up until the number of periods
     
         
         # Load up the predicted value and the lower and upper bounds, only non-negative values are allowed

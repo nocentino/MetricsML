@@ -4,12 +4,12 @@ import pandas
 from prophet import Prophet
 
 
-# Prometheus api endpoint for query get from environment variable
+# Prometheus API endpoint for query get from environment variable
 URL ='http://localhost:9090/api/v1/query'
 
 
 # CPU Query
-PROMQL1 = {'query':"sqlserver_cpu_sqlserver_process_cpu[1d]"}
+PROMQL1 = {'query':"sqlserver_cpu_sqlserver_process_cpu[3d]"}
 
 
 # Get the response from the prometheus API
@@ -51,12 +51,12 @@ print("\nPredicting for: " + my_predicted_sql_instance +
       "\tNumber of metrics to be evaluated: " + str(df.y.count()) )
 
 
-# Use prophet to predict a value 5 minutes in the future based off of the data in the data frame
+# Use prophet to predict a value 30 seconds in the future based off of the data in the data frame
 df['ds'] = pandas.to_datetime(df['ds'], unit='s')
 m = Prophet(changepoint_prior_scale=1.0)
 m.fit(df)
 future = m.make_future_dataframe(periods=30, freq='s')      #Automatically fits to sampling interval in the data set, here its 30 seconds
-forecast = m.predict(future)                                 #Will predict each interval up until the number of periods
+forecast = m.predict(future)                                #Will predict each interval up until the number of periods
 
 
 # Let's look at the last 5 rows of the source data frame
