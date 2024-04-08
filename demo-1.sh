@@ -45,3 +45,8 @@ code ./grafana/datasources/datasource.yaml
 # Now let's look at Grafana and see how to visualize the CPU metrics into a dashboard
 open http://localhost:3000
 
+
+# Things to check out, 
+# 1. Explore the data source
+# 2. Explore the dashboard and its variables
+# 3. Explore the query for CPU usage
