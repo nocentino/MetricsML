@@ -19,7 +19,7 @@ docker exec -it metricsml-sql1-1 bash
 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'S0methingS@Str0ng!' -i /opt/mssql-tools/bin/CPU_Sadness.sql &
 exit
 docker stats
-docker update metricsml-sql1-1 --cpus .75
+docker update metricsml-sql1-1 --cpus 5.00
 
 
 # Let's first look at the metrics being collected from SQL Server by Telegraf

@@ -1,5 +1,5 @@
 # Install the required packages using pip
-# pip install requests prophet 
+# pip install requests pandas prophet
 
 # Launch python3 at the cli
 
@@ -15,7 +15,7 @@ URL ='http://localhost:9090/api/v1/query'
 
 
 # CPU Query
-PROMQL1 = {'query':"sqlserver_cpu_sqlserver_process_cpu[3d]"}
+PROMQL1 = {'query':"sqlserver_cpu_sqlserver_process_cpu[1d]"}
 
 
 # Get the response from the prometheus API

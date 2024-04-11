@@ -116,13 +116,8 @@ def get_metrics():
         instance = predicted_metrics[0]
         for metricname, metricvalue in instance.metrics.items():
             get_metrics.gauge[metricname] = Gauge(metricname, 'Predicted Metric : ' + metricname, ['sql_instance'])
-
-        # update with the first batch of metrics
-        for instance in predicted_metrics:
-            for metricname, metricvalue in instance.metrics.items():
-                get_metrics.gauge[metricname].labels(sql_instance=instance.sql_instance_name).set(metricvalue)
   
-    # on subsequent page loads update the gauge metrics
+    # Update the gauge metrics
     for instance in predicted_metrics:
         for metricname, metricvalue in instance.metrics.items():
             get_metrics.gauge[metricname].labels(sql_instance=instance.sql_instance_name).set(metricvalue)
