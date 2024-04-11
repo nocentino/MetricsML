@@ -1,3 +1,4 @@
+--From: https://stackoverflow.com/questions/24810905/trying-to-create-an-sql-query-that-will-max-all-cpus-to-100
 SELECT MyInt = CONVERT(BIGINT, o1.object_id) + CONVERT(BIGINT, o2.object_id) + CONVERT(BIGINT, o3.object_id)
 INTO #temp
 FROM sys.objects o1
