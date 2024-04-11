@@ -1,7 +1,13 @@
+# Install the required packages using pip
+# pip install requests prophet 
+
+# Launch python3 at the cli
+
 import requests, platform
 import time, sys, os, re
 import pandas
 from prophet import Prophet
+
 
 
 # Prometheus API endpoint for query get from environment variable
