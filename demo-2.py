@@ -1,5 +1,6 @@
 # Install the required packages using pip
-# pip install requests pandas prophet
+pip install requests pandas prophet
+
 
 # Launch python3 at the cli
 
