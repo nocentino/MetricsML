@@ -5,17 +5,17 @@ The code in this repository is designed to help you get started on your Machine 
 
 ## Session Abstract
 
-The code in this repository was presented at [PowerShell Summit 2024](https://www.powershellsummit.org/), this is the session abstract. [You can watch the sesion here.](https://www.youtube.com/watch?v=AleqE33JTgU)
+The code in this repository was presented at [PowerShell Summit 2024](https://www.powershellsummit.org/), this is the session abstract. [You can watch the session here.](https://www.youtube.com/watch?v=AleqE33JTgU)
 
-In today's data-driven world, the performance and reliability of database and application systems us critical for the success of businesses. This session explores using machine learning to identify performance anomalies in database and application workloads by harnessing performance metrics collected via Prometheus, a widely adopted monitoring and alerting tool.
+    In today's data-driven world, the performance and reliability of database and application systems us critical for the success of businesses. This session explores using machine learning to identify performance anomalies in database and application workloads by harnessing performance metrics collected via Prometheus, a widely adopted monitoring and alerting tool.
 
-In this session, you will learn the following:
-* Introduction to Prometheus Metrics
-* Machine Learning in Fundamentals
-* Using Anomaly Detection Models
-* Practical Use Cases for Anomaly Detection in system performance monitoring
+    In this session, you will learn the following:
+    * Introduction to Prometheus Metrics
+    * Machine Learning in Fundamentals
+    * Using Anomaly Detection Models
+    * Practical Use Cases for Anomaly Detection in system performance monitoring
 
-This session is designed for database administrators, DevOps engineers, data engineers, and anyone interested in ensuring the reliability and optimal performance of their database and application systems. Join us to gain valuable insights into how machine learning, when combined with Prometheus metrics, can change the we monitor and manage workloads, making them more efficient and resilient.
+    This session is designed for database administrators, DevOps engineers, data engineers, and anyone interested in ensuring the reliability and optimal performance of their database and application systems. Join us to gain valuable insights into how machine learning, when combined with Prometheus metrics, can change the we monitor and manage workloads, making them more efficient and resilient.
 
 
 ## Getting Started
