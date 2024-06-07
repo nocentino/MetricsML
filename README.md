@@ -1,4 +1,11 @@
-## About:
+## About This Repository
+
+The code in this repository is designed to help you get started on your Machine Learning (ML) journey. Here you will find educational code and resources that demonstrate how to collect, visualize, and analyze SQL Server performance metrics using ML techniques. By exploring the scripts and tools provided in MetricsML, users can gain hands-on experience in applying ML algorithms to identify performance bottlenecks, predict future trends, and enhance database optimization strategies. MetricsML serves as a practical learning platform for anyone interested in integrating ML with SQL Server performance monitoring. The examples in this repository can easily be extended to include workloads outside of SQL Server. 
+
+
+## Session Abstract
+
+The code in this repository was presented at [PowerShell Summit 2024](https://www.powershellsummit.org/), this is the session abstract. [You can watch the sesion here.](https://www.youtube.com/watch?v=AleqE33JTgU)
 
 In today's data-driven world, the performance and reliability of database and application systems us critical for the success of businesses. This session explores using machine learning to identify performance anomalies in database and application workloads by harnessing performance metrics collected via Prometheus, a widely adopted monitoring and alerting tool.
 
@@ -27,7 +34,7 @@ This is an example appilication intended for instructional purposes only to help
 
 ## Watch the Conference Session
 
-[Detecting Workload Anomalies with Prometheus and Machine Learning](https://www.youtube.com/watch?v=AleqE33JTgU)
+[Detecting Workload Anomalies with Prometheus and Machine Learning](https://www.youtube.com/watch?v=AleqE33JTgU) from [PowerShell Summit 2024](https://www.powershellsummit.org/)
 
 <p align="center">
   <img href="https://www.youtube.com/watch?v=AleqE33JTgU" src="https://www.nocentino.com/images/MetricsML_PowerShellSummit.png" alt="Detecting Workload Anomalies with Prometheus and Machine Learning by Anthony Nocentino" />
