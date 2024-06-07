@@ -1,9 +1,31 @@
-Install Docker Desktop: [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
+## Getting Started:
 
-Install Python: [https://www.python.org/downloads/](https://www.python.org/downloads/)
+* Install Docker Desktop: [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
 
-[Watch Detecting Workload Anomalies with Prometheus and Machine Learning by Anthony Nocentino from PowerShell Summit 2024](https://www.youtube.com/watch?v=AleqE33JTgU)
+* Install Python: [https://www.python.org/downloads/](https://www.python.org/downloads/)
+
+* Pull the repository and run the code each of the following scripts:
+
+  * [`demo-1.sh`](https://github.com/nocentino/MetricsML/blob/main/demo-1.sh) - In this demo, using Docker Compose, you will start up your monitoring stack and an example workload and review each of the components of the monitoring stack, such as Prometheus, Grafana, and Telegraf.
+  * [`demo-2.py`](https://github.com/nocentino/MetricsML/blob/main/demo-2.sh) — In this demo, using Python 3, you will get hands-on experience using Prophet to make machine-learning predictions based on your example workload. We'll introduce performance metric data access and the data structures used, and then learn how to make predictions on time series data with Prophet.
+  * [`demo-3.sh`](https://github.com/nocentino/MetricsML/blob/main/demo-3.sh) - This demo brings everything together. You'll see the example web application for making the metric prediction and then expose those metrics using the Prometheus Client. You will then examine some example dashboards with predicted metrics.
+
+## Watch the Conference Session
+
+[Detecting Workload Anomalies with Prometheus and Machine Learning](https://www.youtube.com/watch?v=AleqE33JTgU)
 
 <p align="center">
   <img href="https://www.youtube.com/watch?v=AleqE33JTgU" src="https://www.nocentino.com/images/MetricsML_PowerShellSummit.png" alt="Detecting Workload Anomalies with Prometheus and Machine Learning by Anthony Nocentino" />
 </p>
+
+## Session Abstract
+
+In today's data-driven world, the performance and reliability of database and application systems us critical for the success of businesses. This session explores using machine learning to identify performance anomalies in database and application workloads by harnessing performance metrics collected via Prometheus, a widely adopted monitoring and alerting tool.
+
+In this session, you will learn the following:
+* Introduction to Prometheus Metrics
+* Machine Learning in Fundamentals
+* Building Anomaly Detection Models
+* Practical Use Cases for Anomaly Detection in system performance monitoring
+
+This session is designed for database administrators, DevOps engineers, data engineers, and anyone interested in ensuring the reliability and optimal performance of their database and application systems. Join us to gain valuable insights into how machine learning, when combined with Prometheus metrics, can change the we monitor and manage workloads, making them more efficient and resilient.
