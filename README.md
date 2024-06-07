@@ -2,6 +2,8 @@
 
 The code in this repository is designed to help you get started on your Machine Learning (ML) journey. Here you will find educational code and resources that demonstrate how to collect, visualize, and analyze SQL Server performance metrics using ML techniques. By exploring the scripts and tools provided in MetricsML, users can gain hands-on experience in applying ML algorithms to identify performance bottlenecks, predict future trends, and enhance database optimization strategies. MetricsML serves as a practical learning platform for anyone interested in integrating ML with SQL Server performance monitoring. The examples in this repository can easily be extended to include workloads outside of SQL Server. 
 
+>This is an example application intended for instructional purposes only to help you the learner get started using machine learning techniques on data.
+
 
 ## Session Abstract
 
@@ -29,8 +31,6 @@ This session is designed for database administrators, DevOps engineers, data eng
   * [`demo-1.sh`](https://github.com/nocentino/MetricsML/blob/main/demo-1.sh) - In this demo, using Docker Compose, you will start up your monitoring stack and an example workload and review each of the components of the monitoring stack, such as Prometheus, Grafana, and Telegraf to learn how performance metrics flow through the monitoring stack. [Link to demo 1 in the video](https://youtu.be/AleqE33JTgU?si=9A-N-8L0L34jXr7p&t=969)
   * [`demo-2.py`](https://github.com/nocentino/MetricsML/blob/main/demo-2.sh) — In this demo, using Python 3, you will get hands-on experience using Prophet at the CLI to make machine-learning predictions based on your example workload. We'll introduce performance metric data access and the data structures used, and then learn how to make predictions on time series data with Prophet. [Link to demo 2 in the video](https://youtu.be/AleqE33JTgU?si=4RL4If1CDtiPi1rz&t=2462)
   * [`demo-3.sh`](https://github.com/nocentino/MetricsML/blob/main/demo-3.sh) - This demo brings everything together, getting data from Prophet into Prometheus using Python. You'll see the example web application for making the metric prediction and then expose those metrics using the Prometheus Client. You will then examine some example dashboards with predicted metrics. [Link to demo 1 in the video](https://youtu.be/AleqE33JTgU?si=Gj04BIFs6rN9vNYs&t=3259)
-
-This is an example appilication intended for instructional purposes only to help you the learner get started using machine learning techniques on data.
 
 ## Watch the Conference Session
 
