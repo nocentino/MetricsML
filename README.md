@@ -24,7 +24,7 @@ This session is designed for database administrators, DevOps engineers, data eng
 
 * Install Python: [https://www.python.org/downloads/](https://www.python.org/downloads/)
 
-* Pull the repository and run the code each of the following scripts. You will want to run each line of code line by line in your terminal. If you're having trouble watch the video demos in the links below.
+* Download the code. Then run each of demo scripts below. You will want to run each line of code interactively (line by line) in your terminal. If you're having trouble watch the video demos in the links below.
 
   * [`demo-1.sh`](https://github.com/nocentino/MetricsML/blob/main/demo-1.sh) - In this demo, using Docker Compose, you will start up your monitoring stack and an example workload and review each of the components of the monitoring stack, such as Prometheus, Grafana, and Telegraf to learn how performance metrics flow through the monitoring stack. [Link to demo 1 in the video](https://youtu.be/AleqE33JTgU?si=9A-N-8L0L34jXr7p&t=969)
   * [`demo-2.py`](https://github.com/nocentino/MetricsML/blob/main/demo-2.sh) — In this demo, using Python 3, you will get hands-on experience using Prophet at the CLI to make machine-learning predictions based on your example workload. We'll introduce performance metric data access and the data structures used, and then learn how to make predictions on time series data with Prophet. [Link to demo 2 in the video](https://youtu.be/AleqE33JTgU?si=4RL4If1CDtiPi1rz&t=2462)
