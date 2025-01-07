@@ -11,19 +11,22 @@ docker ps
 
 
 # Copy CPU_Sadness.sql into the sql1 container
-docker cp ./CPU_Sadness.sql metricsml-sql1-1:/opt/mssql-tools/bin/CPU_Sadness.sql
+docker cp ./CPU_Sadness.sql metricsml-sql1-1:/opt/mssql-tools18/bin/CPU_Sadness.sql
+docker update metricsml-sql1-1 --cpus 5.00
 
+docker cp ./CPU_Sadness.sql metricsml-sql2-1:/opt/mssql-tools18/bin/CPU_Sadness.sql
+docker update metricsml-sql2-1 --cpus 5.00
 
 # let's kick off some load on our sql instance
 docker exec -it metricsml-sql1-1 bash
-/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'S0methingS@Str0ng!' -i /opt/mssql-tools/bin/CPU_Sadness.sql &
+docker exec -it metricsml-sql2-1 bash
+/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'S0methingS@Str0ng!' -i /opt/mssql-tools18/bin/CPU_Sadness.sql -No &
 exit
 docker stats
-docker update metricsml-sql1-1 --cpus 5.00
 
 
 # Let's first look at the metrics being collected from SQL Server by Telegraf
-open http://localhost:9273/metrics 
+open http://localhost:9273/metrics
 
 
 # Quick review of the telegraf configuration for the SQL Server plugin
